@@ -1,0 +1,196 @@
+@use "./boot";
+
+$btn-primary-color: #359fd0;
+$primary-color-1: #359fd0;
+$primary-color-2: #0c7dbb;
+$primary-color-3: #3594d4;
+$primary-color-4: #4aa6d9;
+
+@mixin slide_in($ani-name: slide_left_in, $ani-duration: 0.5s, $ani-delay: 0) {
+  animation-name: $ani-name;
+  animation-duration: $ani-duration;
+  animation-delay: $ani-delay;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+}
+
+.container {
+  height: 100vh;
+  display: grid;
+
+  .content-1,
+  .content-2 {
+    margin: auto;
+    display: grid;
+    padding: 50px;
+    height: 100vh;
+    width: 100%;
+  }
+
+  .content-1 {
+    grid-template-rows: 1fr 2fr 1fr;
+    background-color: #f8f8f8;
+
+    .fa-telegram {
+      font-size: 30.54px;
+      color: #359fd0;
+      animation: ease_in 4s ease-in-out 1;
+    }
+
+    .section-content {
+      @include slide_in;
+
+      .title-context {
+        h1 {
+          font-family: "PopBold";
+          line-height: 35px;
+          font-size: 2rem;
+        }
+      }
+
+      p {
+        margin: 8px 0;
+        font-size: 0.9375rem;
+      }
+
+      .btn {
+        width: 150px;
+        padding: 15px;
+        border: none;
+        outline: none;
+        background: $btn-primary-color;
+        color: #fff;
+        cursor: pointer;
+      }
+    }
+
+    .footer-wrapper {
+      @include slide_in($ani-duration: 0.8s);
+
+      align-self: end;
+
+      h1 {
+        font-size: 0.875rem;
+        margin-bottom: 5px;
+      }
+
+      .divider {
+        width: 25px;
+        height: 3px;
+        margin-bottom: 10px;
+        background-color: #000;
+      }
+
+      .recent-news-wrapper {
+        display: grid;
+        font-family: "PopBold";
+        a {
+          color: #000;
+        }
+
+        div {
+          width: 70%;
+        }
+
+        p {
+          color: $primary-color-2;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  .content-2 {
+    grid-template-columns: 10% 1fr 10%;
+    grid-template-rows: auto 1fr;
+    width: 100%;
+    background: linear-gradient(-133deg, $primary-color-3, $primary-color-4);
+    overflow: hidden;
+
+    .content-2-nav {
+      grid-column: 2/5;
+      @include slide_in($ani-name: slide_right_in, $ani-delay: 0.1s);
+
+      ul {
+        display: flex;
+        justify-content: space-around;
+        padding: 10px 5px;
+
+        li {
+          text-align: right;
+          width: 100%;
+
+          a {
+            color: #fff;
+          }
+        }
+      }
+    }
+
+    .phone-wrapper {
+      @include slide_in($ani-name: slide_right_in, $ani-delay: 0.3s);
+
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-row: 2;
+      grid-column: 2/5;
+
+      .phone-details {
+        align-self: center;
+        a {
+          color: #fff;
+        }
+
+        i {
+          font-size: 25px;
+          margin-bottom: 5px;
+        }
+      }
+
+      .phone img {
+        height: 80vh;
+      }
+    }
+  }
+}
+
+@keyframes slide_left_in {
+  0% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes ease_in {
+  0% {
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 0.4;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slide_right_in {
+  0% {
+    transform: translateX(50%);
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .recent-news-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

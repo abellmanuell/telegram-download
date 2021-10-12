@@ -1,0 +1,56 @@
+@font-face {
+  font-family: "PopLight";
+  src: url("./font/PoppinsLight.ttf");
+}
+@font-face {
+  font-family: "PopRegular";
+  src: url("./font/PoppinsRegular.ttf");
+}
+@font-face {
+  font-family: "PopBold";
+  src: url("./font/PoppinsBold.ttf");
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: "PopLight";
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "PopRegular";
+}
+
+h1 {
+  font-size: 1.0625rem;
+}
+
+p {
+  font-size: 0.875rem;
+  margin-bottom: 10px;
+}
+
+@media screen and (max-width: 1024px) {
+  h1 {
+    font-size: 14px;
+  }
+}
